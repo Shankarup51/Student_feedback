@@ -2,9 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
-import StudentLoginPage from './Loginpages/StudentloginPage';
-import FacultyLoginPage from './Loginpages/FacultyloginPage';
-import AdminLoginPage from './Loginpages/AdminloginPage';
+import StudentLoginPage from './Pages/Student/Login';
+import FacultyLoginPage from './Pages/Faculty/Login';
+import AdminLoginPage from './Pages/Admin/Login';
+import StudentDashboard from './Pages/Student/Dashboard';
+import FacultyDashboard from './Pages/Faculty/Dashboard';
+import AdminDashboard from './Pages/Admin/Dashboard';
+import ProtectedRoute from './routes/ProtectedRoute';
+import { AuthProvider } from './context/AuthContext';
+import StudentSettings from './Pages/Student/StudentSettings';
+
 
 
 
@@ -16,8 +23,18 @@ function App() {
       <Route path='/studentLoginPage' element={<StudentLoginPage/>}></Route>
       <Route path='/facultyLoginPage' element={<FacultyLoginPage/>}></Route>
       <Route path='/adminLoginPage' element={<AdminLoginPage/>}></Route>
+         <Route element={<ProtectedRoute allowedRoles={["student"]} />}>
+            <Route path="/student/dashboard" element={<StudentDashboard />} />
+             <Route path="/student/settings" element={<StudentSettings />} />
+          </Route>
 
+          <Route element={<ProtectedRoute allowedRoles={["faculty"]} />}>
+            <Route path="/faculty/dashboard" element={<FacultyDashboard />} />
+          </Route>
 
+          <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          </Route>
     </Routes>
     </div>
   );
