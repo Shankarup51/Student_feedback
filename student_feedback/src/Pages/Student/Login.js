@@ -4,6 +4,8 @@ import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import bgimage from "../../assets/02.png";
 import { AuthContext } from "../../context/AuthContext";
+import toast from "react-hot-toast";
+
 
 function StudentLoginPage() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -21,9 +23,12 @@ function StudentLoginPage() {
 
     if (email === "student@college.com" && password === "student123") {
       login({ id: "stu001", name: "Student Name", role: "student" });
+      toast.success("Login Successfull!");
       navigate("/student/dashboard");
     } else {
-      alert("Invalid credentials");
+      
+      toast.error("Invalid Credentials!");
+
     }
   }
 

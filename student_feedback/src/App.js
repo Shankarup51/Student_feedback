@@ -11,6 +11,8 @@ import AdminDashboard from './Pages/Admin/Dashboard';
 import ProtectedRoute from './routes/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 import StudentSettings from './Pages/Student/StudentSettings';
+import SendFeedbackPage from './Pages/Student/FeedbackForm';
+
 
 
 
@@ -26,6 +28,7 @@ function App() {
          <Route element={<ProtectedRoute allowedRoles={["student"]} />}>
             <Route path="/student/dashboard" element={<StudentDashboard />} />
              <Route path="/student/settings" element={<StudentSettings />} />
+            <Route path="/student/sendfeedback" element={<SendFeedbackPage />} />
           </Route>
 
           <Route element={<ProtectedRoute allowedRoles={["faculty"]} />}>

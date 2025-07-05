@@ -3,6 +3,7 @@ import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import bgimage from "../../assets/02.png";
 import { AuthContext } from "../../context/AuthContext";
+import toast from "react-hot-toast";
 
 function AdminLoginPage() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -20,8 +21,9 @@ function AdminLoginPage() {
     if (email === "admin@college.com" && password === "admin123") {
       login({ id: "admin001", name: "Admin User", role: "admin" });
       navigate("/admin/dashboard");
+      toast.success("Login Successfull !");
     } else {
-      alert("Invalid Credentials");
+      toast.error("Invalid Credentials !");
     }
   };
 

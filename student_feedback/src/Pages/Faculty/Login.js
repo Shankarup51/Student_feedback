@@ -4,6 +4,7 @@ import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import bgimage from "../../assets/02.png";
 import { AuthContext } from "../../context/AuthContext";
+import toast from "react-hot-toast";
 
 function FacultyLoginPage() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -20,9 +21,10 @@ function FacultyLoginPage() {
     const { email, password } = formData;
     if (email === "faculty@college.com" && password === "faculty123") {
       login({ id: "fac001", name: "Dr. Sharma", role: "faculty" });
+      toast.success("Login Successfull !");
       navigate("/faculty/dashboard");
     } else {
-      alert("Invalid Credentials");
+      toast.error("Invalid Credentials !");
     }
   };
 

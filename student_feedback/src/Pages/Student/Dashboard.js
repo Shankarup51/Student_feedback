@@ -9,15 +9,17 @@ const StudentDashboard = () => {
   const [selectedSem, setSelectedSem] = useState("1");
   const semesterData = semesters[selectedSem];
 
+    
+
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-blue-200">
       <Sidebar />
       <div className="flex-1">
         <Header userRole="student" />
         <div className="p-6">
           <div className="flex justify-between items-center my-4">
             <select
-              className="border px-4 py-2 rounded bg-white shadow"
+              className="border px-4 py-2 rounded  bg-purple-500 hover:bg-purple-600 text-white shadow"
               value={selectedSem}
               onChange={(e) => setSelectedSem(e.target.value)}
             >
@@ -27,7 +29,7 @@ const StudentDashboard = () => {
                 </option>
               ))}
             </select>
-            <button className="bg-gray-200 px-4 py-2 rounded">Previous</button>
+            <button className=" bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded">Previous</button>
           </div>
 
           <div className="space-y-6">
