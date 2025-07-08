@@ -4,12 +4,19 @@ import { PiSignOutThin } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-
+import toast from "react-hot-toast";
 
 
 const Sidebar = () => {
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
+
+    const handleSignOut = () => {
+        logout();
+        toast.success("Sign Out Successful");
+        navigate("/login");
+    };
+
     return (
 
         <div className="w-64 bg-blue-400 shadow p-4 flex flex-col justify-between">
@@ -24,7 +31,8 @@ const Sidebar = () => {
                         <CiSettings />
                         <div> Settings</div>
                     </div>
-                    <div className="flex gap-2 items-center text-lg font-semibold hover:cursor-pointer border-b pb-2 ">
+                    <div onClick={handleSignOut}
+                    className="flex gap-2 items-center text-lg font-semibold hover:cursor-pointer border-b pb-2 ">
                         <PiSignOutThin />
                         <div>Sign Out</div></div>
                 </div>
