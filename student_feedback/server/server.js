@@ -1,9 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const studentRoutes = require("./routes/student");
-const facultyRoutes = require("./routes/faculty");
-const adminRoutes = require("./routes/admin");
+const studentRoutes = require("./login_routes/student");
+const facultyRoutes = require("./login_routes/faculty");
+const adminRoutes = require("./login_routes/admin");
 
 const app = express();
 app.use(cors());
