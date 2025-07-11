@@ -17,19 +17,30 @@ function StudentLoginPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
-  function submitHandler(e) {
-    e.preventDefault();
-    const { email, password } = formData;
+  function submitHandler(event) {
+    event.preventDefault();
 
-    if (email === "student@college.com" && password === "student123") {
-      login({ id: "stu001", name: "Student Name", role: "student" });
-      toast.success("Login Successfull!");
-      navigate("/student/dashboard");
-    } else {
-      
-      toast.error("Invalid Credentials!");
-
-    }
+    fetch("http://localhost:3001/api/student/login", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(async (res) => {
+      const data = await res.json();
+      if (res.status === 200) {
+        toast.success("Login Successfull");
+        login(data.student);
+        navigate("/student/dashboard");
+      } else {
+        toast.error("Login failed:"+data.message);
+        console.log("Login failed: " + data.message);
+      }
+    })
+    .catch(err => {
+      toast.error("Network/server error:"+err);
+    });
   }
 
   const myStyle = { backgroundImage: `url(${bgimage})` };
@@ -91,7 +102,7 @@ function StudentLoginPage() {
           onClick={() => navigate("/")}
           className="w-full max-w-md border border-white rounded-md p-4 shadow-xl mt-3 bg-red-500 text-white text-[20px] md:text-[24px]"
         >
-          Go to Home Page
+          Home Page
         </button>
       </div>
     </div>

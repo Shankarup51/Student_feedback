@@ -16,17 +16,31 @@ function FacultyLoginPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    const { email, password } = formData;
-    if (email === "faculty@college.com" && password === "faculty123") {
-      login({ id: "fac001", name: "Dr. Sharma", role: "faculty" });
-      toast.success("Login Successfull !");
-      navigate("/faculty/dashboard");
-    } else {
-      toast.error("Invalid Credentials !");
-    }
-  };
+  function submitHandler(event) {
+    event.preventDefault();
+
+    fetch("http://localhost:3001/api/faculty/login", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(async (res) => {
+      const data = await res.json();
+      if (res.status === 200) {
+        toast.success("Login Successfull");
+        login(data.faculty);
+        navigate("/faculty/dashboard");
+      } else {
+        toast.error("Login failed:"+data.message);
+        console.log("Login failed: " + data.message);
+      }
+    })
+    .catch(err => {
+      toast.error("Network/server error:"+err);
+    });
+  }
 
   const myStyle = { backgroundImage: `url(${bgimage})` };
 
@@ -87,7 +101,7 @@ function FacultyLoginPage() {
           onClick={() => navigate("/")}
           className="w-full max-w-md border border-white rounded-md p-4 shadow-xl mt-3 bg-red-500 text-white text-[20px] md:text-[24px]"
         >
-          Go to Home Page
+          Home Page
         </button>
       </div>
     </div>
