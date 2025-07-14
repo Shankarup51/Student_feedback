@@ -14,7 +14,7 @@ const Sidebar = () => {
     const handleSignOut = () => {
         logout();
         toast.success("Sign Out Successful");
-        navigate("/login");
+        navigate("/");
     };
 
     return (
