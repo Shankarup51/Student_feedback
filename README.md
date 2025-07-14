@@ -61,34 +61,35 @@ Built with **React**, **Node.js**, **Express**, and **MySQL**.
 ---
 
 ## 🗂️ Project Structure
+```bash
 INTERSHIP_NG/
-├── student_feedback/         # React client
+├── student_feedback/                  # React client
 │   ├── public/
 │   ├── src/
-│   │   ├── assets/           # Logos, background images
+│   │   ├── assets/                    # Logos, background images
 │   │   ├── components/
 │   │   │   ├── admin/
-│   │   │   ├── common/       # Header, Sidebar (shared)
-│   │   │   ├── faculty/      # Recharts components
-│   │   │   └── student/      # SubjectTable, etc.
-│   │   ├── context/          # AuthContext.js
-│   │   ├── data/             # Dummy course/subject data
+│   │   │   ├── common/                # Header, Sidebar (shared)
+│   │   │   ├── faculty/               # Recharts components
+│   │   │   └── student/               # SubjectTable, etc.
+│   │   ├── context/                   # AuthContext.js
+│   │   ├── data/                      # Dummy course/subject data
 │   │   ├── Pages/
 │   │   │   ├── Admin/
 │   │   │   ├── Faculty/
-│   │   │   └── Student/      # Login, Dashboard, Settings, FeedbackForm
-│   │   ├── routes/           # ProtectedRoute.jsx
+│   │   │   └── Student/               # Login, Dashboard, Settings, FeedbackForm
+│   │   ├── routes/                    # ProtectedRoute.jsx
 │   │   ├── App.js
 │   │   ├── index.js
 │   │   └── tailwind.config.js
 │   ├── package.json
 │   └── README.md
-│
-├── server/                   # Express backend
-│   ├── login_routes/         # Role-based login routes
-│   ├── db.js                 # MySQL connection config
-│   └── server.js             # Express server entry
-│
+├── server/                            # Express backend
+│   ├── login_routes/                  # Role-based login routes
+│   ├── db.js                          # MySQL connection config
+│   └── server.js                      # Express server entry
 ├── .gitignore
 ├── LICENSE
-└── README.md                 # You're reading it 😉
+└── README.md                          # You're reading it 😉
+```
+
