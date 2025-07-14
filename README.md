@@ -6,7 +6,7 @@ Built with **React**, **Node.js**, **Express**, and **MySQL**.
 
 ---
 
-## 🔗 Live Demo (optional)
+## 🔗 Live Demo
 👉 [View Demo](https://your-live-demo-link.com)
 
 ---
@@ -56,7 +56,7 @@ Built with **React**, **Node.js**, **Express**, and **MySQL**.
 - 🟢 Node.js
 - 🚀 Express.js
 - 🗃️ MySQL
-- 🔒 JWT Authentication (optional)
+- 🔒 JWT Authentication
 
 ---
 
@@ -93,3 +93,38 @@ INTERSHIP_NG/
 └── README.md                          # You're reading it 😉
 ```
 
+## ⚙️ Setup Instructions
+
+### 🧑‍💻 Prerequisites
+- Node.js and npm installed
+- MySQL Server installed and running
+- (Optional) Postman or ThunderClient for API testing
+
+### 📦 Backend Setup (`/server`)
+1. Navigate to server directory:
+```bash
+cd server
+npm install
+
+```
+## Configure MySQL Database:
+```bash
+CREATE DATABASE feedback_system;
+```
+## Create .env file:
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=feedback_system
+
+### Start backend server:
+ ```bash
+node server.js
+```
+
+## Navigate to frontend directory:
+   ```bash
+   cd student_feedback
+   npm install
+   npm start
+   ```
