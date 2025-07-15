@@ -17,7 +17,6 @@ const StudentDashboard = () => {
       .then((res) => res.json())
       .then((data) => {
         setSemesterData(data);
-        console.log(`Semester ${selectedSem} data:`, semesterData);
       })
       .catch((err) => {
         toast.error("Error fetching semester data:", err);

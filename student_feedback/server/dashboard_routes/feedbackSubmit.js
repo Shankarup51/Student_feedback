@@ -61,7 +61,27 @@ router.post("/submit-feedback", async (req, res) => {
           comments,
         ]
       );
-    } else {
+    } else if(formType==="course"){
+      const result = await db.promise().query(
+        `INSERT INTO feedback_course 
+        (student_id, course_id, semester, year,
+         q1, q2, q3, q4, q5, comments) 
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          student_id,
+          course_id,
+          semester,
+          year,
+          responses[0],
+          responses[1],
+          responses[2],
+          responses[3],
+          responses[4],
+          comments,
+        ]
+      );
+    }
+    else {
       return res.status(400).json({ message: "Invalid formType" });
     }
 
