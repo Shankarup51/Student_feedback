@@ -17,8 +17,9 @@ function StudentLoginPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
-  function submitHandler(event) {
-    event.preventDefault();
+  function submitHandler(e) {
+   
+    e.preventDefault();
 
     fetch("http://localhost:3001/api/student/login", {
       method: "POST",
