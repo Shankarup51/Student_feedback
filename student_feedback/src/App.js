@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
@@ -9,15 +8,11 @@ import StudentDashboard from './Pages/Student/Dashboard';
 import FacultyDashboard from './Pages/Faculty/Dashboard';
 import AdminDashboard from './Pages/Admin/Dashboard';
 import ProtectedRoute from './routes/ProtectedRoute';
-import { AuthProvider } from './context/AuthContext';
 import StudentSettings from './Pages/Student/StudentSettings';
 import SendFeedbackPage from './Pages/Student/FeedbackForm';
 
-
-
-
-
 function App() {
+
   return (
     <div >
     <Routes>
@@ -27,7 +22,7 @@ function App() {
       <Route path='/adminLoginPage' element={<AdminLoginPage/>}></Route>
          <Route element={<ProtectedRoute allowedRoles={["student"]} />}>
             <Route path="/student/dashboard" element={<StudentDashboard />} />
-             <Route path="/student/settings" element={<StudentSettings />} />
+            <Route path="/student/settings" element={<StudentSettings />} />
             <Route path="/student/sendfeedback" element={<SendFeedbackPage />} />
           </Route>
 

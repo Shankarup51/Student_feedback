@@ -20,35 +20,28 @@ function StudentLoginPage() {
   function submitHandler(e) {
    
     e.preventDefault();
-    const { email, password } = formData;
 
-    if (email === "student@college.com" && password === "student123") {
-      login({ id: "stu001", name: "Student Name", role: "student" });
-      navigate("/student/dashboard");
-    } else {
-      alert("Invalid credentials");
-    }
-    // fetch("http://localhost:3001/api/student/login", {
-    //   method: "POST",
-    //   headers: {
-    //       "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify(formData)
-    // })
-    // .then(async (res) => {
-    //   const data = await res.json();
-    //   if (res.status === 200) {
-    //     toast.success("Login Successfull");
-    //     login(data.student);
-    //     navigate("/student/dashboard");
-    //   } else {
-    //     toast.error("Login failed:"+data.message);
-    //     console.log("Login failed: " + data.message);
-    //   }
-    // })
-    // .catch(err => {
-    //   toast.error("Network/server error:"+err);
-    // });
+    fetch("http://localhost:3001/api/student/login", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(async (res) => {
+      const data = await res.json();
+      if (res.status === 200) {
+        toast.success("Login Successfull");
+        login(data.student);
+        navigate("/student/dashboard");
+      } else {
+        toast.error("Login failed:"+data.message);
+        console.log("Login failed: " + data.message);
+      }
+    })
+    .catch(err => {
+      toast.error("Network/server error:"+err);
+    });
   }
 
   const myStyle = { backgroundImage: `url(${bgimage})` };
