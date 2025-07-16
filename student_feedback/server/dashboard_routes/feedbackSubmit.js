@@ -46,7 +46,7 @@ router.post("/submit-feedback", async (req, res) => {
         `INSERT INTO feedback_practical 
         (student_id, faculty_id, course_id, semester, year,
          q1, q2, q3, q4, q5, comments) 
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
           student_id,
           faculty_id,
