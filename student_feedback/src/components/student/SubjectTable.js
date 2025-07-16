@@ -15,9 +15,11 @@ const SubjectTable = ({ title, subjects }) => {
 
         navigate(`/${user.role}/sendfeedback`, {
             state: {
-                courseId: subj.id,
-                courseName: subj.name,
-                faculty: subj.faculty,
+                courseId: subj.course_id,
+                courseName: subj.course_name,
+                facultyName: subj.faculty_name,
+                facultyId: subj.faculty_id,
+                semester:subj.semester
             },
         });
     };
@@ -39,9 +41,9 @@ const SubjectTable = ({ title, subjects }) => {
                 <tbody>
                     {subjects.map((subj, idx) => (
                         <tr key={idx} className="border-t text-sm">
-                            <td className="p-2">{subj.id}</td>
-                            <td className="p-2">{subj.name}</td>
-                            <td className="p-2">{subj.faculty}</td>
+                            <td className="p-2">{subj.course_id}</td>
+                            <td className="p-2">{subj.course_name}</td>
+                            <td className="p-2">{subj.faculty_name}</td>
                             <td className="p-2">
                                 <button className="px-3 py-1 text-white bg-purple-500 hover:bg-purple-600 rounded " onClick={() => handleClick(subj)}>
                                     Add
