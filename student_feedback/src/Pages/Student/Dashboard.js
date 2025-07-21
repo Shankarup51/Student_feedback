@@ -1,15 +1,28 @@
 // pages/student/Dashboard.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/common/Sidebar";
 import Header from "../../components/common/Header";
 import SubjectTable from "../../components/student/SubjectTable";
-import { semesters } from "../../data/subjects";
+import toast from "react-hot-toast";
+// import { semesters } from "../../../server/dashboard_routes/subjects";
 
 const StudentDashboard = () => {
   const [selectedSem, setSelectedSem] = useState("1");
-  const semesterData = semesters[selectedSem];
+  // const semesterData = semesters[selectedSem];
+  const [semesterData, setSemesterData] = useState({ theory: [], practical: [] });
 
-    
+  useEffect(() => {
+    // Fetch data from backend whenever selectedSem changes
+    fetch(`http://localhost:3001/api/student/semester/${selectedSem}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSemesterData(data);
+      })
+      .catch((err) => {
+        toast.error("Error fetching semester data:", err);
+        setSemesterData({ theory: [], practical: [] }); // fallback
+      });
+  }, [selectedSem]);
 
   return (
     <div className="flex min-h-screen bg-blue-200">
@@ -33,8 +46,8 @@ const StudentDashboard = () => {
           </div>
 
           <div className="space-y-6">
-            <SubjectTable title="Theory Subjects" subjects={semesterData?.theory || []} />
-            <SubjectTable title="Practical Subjects" subjects={semesterData?.practical || []} />
+            <SubjectTable title="Theory Subjects" subjects={semesterData.theory || []} />
+            <SubjectTable title="Practical Subjects" subjects={semesterData.practical || []} />
           </div>
         </div>
       </div>
