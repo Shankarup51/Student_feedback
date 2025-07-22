@@ -14,5 +14,5 @@ export default function ProtectedRoute({ allowedRoles }) {
     return <Navigate to="/unauthorized" replace />;
   }
 
-  return <Outlet />;
+  return <Outlet/>;
 }
