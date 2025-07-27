@@ -54,21 +54,6 @@ const FeedbackForm = () => {
     setResponses((prev) => ({ ...prev, [index]: value }));
   };
 
-  // const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     console.log("Submitted Feedback:", {
-  //         formType,
-  //         courseId,
-  //         courseName,
-  //         facultyName: formType !== "course" ? facultyName : undefined,
-  //         responses,
-  //         comments,
-  //         user
-  //     });
-  //     toast.success("Feedback submitted successfully!");
-  //     navigate(`/${user.role}/dashboard`);
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
