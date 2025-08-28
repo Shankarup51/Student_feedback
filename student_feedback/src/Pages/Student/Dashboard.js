@@ -4,7 +4,6 @@ import Sidebar from "../../components/common/Sidebar";
 import Header from "../../components/common/Header";
 import SubjectTable from "../../components/student/SubjectTable";
 import toast from "react-hot-toast";
-// import { semesters } from "../../../server/dashboard_routes/subjects";
 
 const StudentDashboard = () => {
   const [selectedSem, setSelectedSem] = useState("1");
