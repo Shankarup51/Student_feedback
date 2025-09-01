@@ -4,9 +4,9 @@ import React, { createContext, useState, useEffect } from 'react';
 // Create context
 export const AuthContext = createContext();
 
-// Dummy roles: "student", "faculty", "admin"
+//  roles: "student", "faculty", "admin"
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // e.g., { name, role, id }
+  const [user, setUser] = useState(null); // 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {

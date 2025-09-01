@@ -20,7 +20,6 @@ function StudentLoginPage() {
   function submitHandler(e) {
    
     e.preventDefault();
-
     fetch("http://localhost:3001/api/student/login", {
       method: "POST",
       headers: {
